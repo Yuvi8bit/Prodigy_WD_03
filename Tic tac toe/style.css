@@ -1,0 +1,154 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #0d0d0d;
+    margin: 0;
+    font-family: 'Roboto', Arial, sans-serif;
+    color: #f0f0f0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+    padding: 30px;
+    background: #1a1a1a;
+    border-radius: 15px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.7);
+}
+
+h1 {
+    font-size: 3.5rem;
+    margin-bottom: 25px;
+    color: #00ff00;
+    text-shadow: 3px 3px 6px rgba(0, 255, 0, 0.7);
+}
+
+.scoreboard {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-bottom: 25px;
+}
+
+.scoreboard div {
+    background-color: #333;
+    padding: 15px;
+    border-radius: 10px;
+    width: 100px;
+    text-align: center;
+    font-size: 1.5rem;
+    color: #00ff00;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+.game-board {
+    display: grid;
+    grid-template-columns: repeat(3, 110px);
+    grid-template-rows: repeat(3, 110px);
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.cell {
+    width: 110px;
+    height: 110px;
+    background-color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2.5rem;
+    cursor: pointer;
+    border-radius: 10px;
+    transition: background-color 0.3s ease, transform 0.1s ease;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+}
+
+.cell:hover, .cell:focus {
+    background-color: #4d4d4d;
+    transform: scale(1.1);
+    outline: none;
+}
+
+.cell.x {
+    color: #ff4500;
+    background: rgba(255, 69, 0, 0.7);
+}
+
+.cell.o {
+    color: #00ff00;
+    background: rgba(0, 255, 0, 0.7);
+}
+
+.winner .cell {
+    animation: blink 1s infinite alternate;
+}
+
+@keyframes blink {
+    from { background-color: #4d4d4d; }
+    to { background-color: #00ff00; }
+}
+
+#winningMessageText {
+    font-size: 2.5rem;
+    margin-bottom: 25px;
+    text-align: center;
+    color: #ff4500;
+    animation: zoomIn 0.5s forwards;
+    opacity: 0;
+    transform: scale(0.5);
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+#restartButton {
+    padding: 15px 30px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border: none;
+    border-radius: 10px;
+    background-color: #00ff00;
+    color: #0d0d0d;
+    transition: background-color 0.3s ease;
+}
+
+#restartButton:hover, #restartButton:focus {
+    background-color: #00cc00;
+    transform: scale(1.1);
+    outline: none;
+}
+
+@media (max-width: 600px) {
+    .game-board {
+        grid-template-columns: repeat(3, 80px);
+        grid-template-rows: repeat(3, 80px);
+    }
+
+    .cell {
+        width: 80px;
+        height: 80px;
+        font-size: 1.8rem;
+    }
+
+    h1 {
+        font-size: 2.8rem;
+    }
+
+    #restartButton {
+        font-size: 1.2rem;
+    }
+}
